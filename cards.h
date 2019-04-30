@@ -6,42 +6,43 @@
 #define CARDS_H
 class Card {
 public:
-    Card();
+    Card(char s, int v,Card* n);
+    char get_suits()const;
+    int get_value()const;
+    bool operator==(const Card& b);
+    Card* next=nullptr;
 private:
-    char suits;
-    int number;
+    const char suits;
+    const int value;
 };
+
 class CardList {
 
 public:
 
     CardList();              // constructor
-    void append(int value); // append value at end of list
+    void append(Card c); // append value at end of list
     void print() const;     // print values separate by ' '
     int count() const;      // return count of values
 
     ~CardList();                      // destructor
     CardList(const CardList& source); //copy constructor (deep copy)
-    int sum() const;                 // sum of all values
-    bool contains(int value) const;  // true if value in list
-    int max() const;                 // maximum value
-    double average() const;          // average of all values
-    void insertFirst(int value);     // insert new first value
-
+    bool contains(Card c) const;  // true if value in list
+    void insertFirst(Card c);     // insert new first value
+    void deleteCard(Card c); // delete the matching card from the CardList
     CardList& operator=(const CardList& source); //overloaded  (NO CHANGE)
 
 private:
 
-    // (Optional) You can add some private helper functions here.
-
-    // definition of Card structure (DO NOT CHANGE):
-    struct Card {
-        int info;
-        Card *next;
-    };
-
     Card *first; // pointer to first node (DO NOT CHANGE):
 };
+/*
+class player {
+public: 
+private:
+    CardList l;
+};
+*/
 #endif
 
 // Use this file to define all your classes and public functions

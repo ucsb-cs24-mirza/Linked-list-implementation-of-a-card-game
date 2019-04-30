@@ -5,8 +5,8 @@
 // This is not exhaustive list of tests. You can remove / edit tests if it doesn't suit your design but you should definitelty add more
 // You should test all possible cornere cases of your public functions
 
-#ifndef CARDS_H
-#define CARDS_H
+#ifndef TESTCARDS_H
+#define TESTCARDS_H
 
 #include <iostream>
 
