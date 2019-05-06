@@ -6,7 +6,7 @@
 #define CARDS_H
 class Card {
 public:
-    Card(char s, int v,Card* n);
+    Card(char s, int v);
     char get_suits()const;
     int get_value()const;
     bool operator==(const Card& b);
@@ -36,13 +36,24 @@ private:
 
     Card *first; // pointer to first node (DO NOT CHANGE):
 };
-/*
-class player {
+
+class Player {
 public: 
+    Player(){ name="I have no name";}
+    void setName(string urname){name = urname;}
+    Card pick()
+    friend ostream& operator<<(ostream& os, const Player& random){
+        os<< random.name<<" picked matching card "<<random.c.get_suits()<<" "<<random.c.get_value()<<endl;
+        return os;
+    }
+    void setlist(const CardList l){ list=l;}
+
 private:
-    CardList l;
+    string name;
+    Card c;
+    CardList list;
 };
-*/
+
 #endif
 
 // Use this file to define all your classes and public functions

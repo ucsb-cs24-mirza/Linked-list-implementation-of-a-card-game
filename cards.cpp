@@ -5,8 +5,7 @@
 
 #include <iostream>
 using namespace std;
-Card::Card(char s, int v, Card* n): suits(s),value(v){
-    next=n;
+Card::Card(char s, int v): suits(s),value(v){
 }
 
 char Card::get_suits() const{
