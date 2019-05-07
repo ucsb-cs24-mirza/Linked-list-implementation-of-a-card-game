@@ -162,7 +162,6 @@ void play(CardList& l1, CardList& l2){
         l2.deleteCard(i2);
         match.deleteCard(i2);
         if (!match.getfirst()){
-            cout<<endl;
             break;
         }
     }

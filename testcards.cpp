@@ -43,7 +43,7 @@ void test_card(){
 
 
 void test_append_empty_list(){ 
-// A test case for append single card node to LinkedList
+// A test case for append single card node to CardList
 }
 
 void test_append_single_element_list(){ 
@@ -53,7 +53,7 @@ void test_append_single_element_list(){
 }
 void test_equal_empty_list(){ 
   string testname = "case 0: [], []";
-  LinkedList l1, l2;
+  CardList l1, l2;
   assertEquals(l1.head,l2.head);
 }
 
