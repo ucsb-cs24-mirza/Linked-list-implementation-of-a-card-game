@@ -4,14 +4,17 @@
 
 #ifndef CARDS_H
 #define CARDS_H
+#include <iostream>
+#include <string>
+using namespace std;
+
 class Card {
 public:
-    Card(string i){info = i;}
-    ~Card(){delete next;}
+    Card(){}
+    ~Card(){}
     string get_info()const;
     bool operator==(const Card& b);
     Card* next=nullptr;
-    Card* prev=nullptr;
 private:
     const string info;
 };
@@ -19,38 +22,31 @@ private:
 class CardList {
 
 public:
-
-    CardList();              // constructor
-    void append(Card c); // append value at end of list
+    CardList():first(nullptr){}
+    void setPlayer(string n){player=n;}
+    Card* getfirst();
+    Card* get(string i);
+    void append(string i); // append value at end of list
     void print() const;     // print values separate by ' '
 
     ~CardList();                      // destructor
     CardList(const CardList& source); //copy constructor (deep copy)
-    bool contains(Card c) const;  // true if value in list
+    bool contains(string i) const;  // true if value in list
     void insertFirst(Card c);     // insert new first value
-    void deleteCard(Card c); // delete the matching card from the CardList
+    void deleteCard(string i); // delete the matching card from the CardList
     CardList& operator=(const CardList& source); //overloaded  (NO CHANGE)
+    friend ostream& operator<<(ostream& os, const CardList& random){
+        os<< random.player;
+        return os;
+    }
+    friend void play(CardList& l1, CardList& l2);
 
 private:
-
+    string player="default";
     Card *first; // pointer to first node (DO NOT CHANGE):
 };
 
-class Player {
-public: 
-    Player(string n){ name=n;}
-    friend void play(CardList& l1, CardList& l2);
-    friend ostream& operator<<(ostream& os, const Player& random){
-        os<< random.name;
-        return os;
-    }
-    Card* getfirst(){return list.first;}
-
-private:
-    string name="default";
-    Card* head; // head ptr to the CardList
-};
-
+void play(CardList& l1, CardList& l2);
 #endif
 
 // Use this file to define all your classes and public functions
