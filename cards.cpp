@@ -36,13 +36,6 @@ bool CardList::contains(string i) const {
     return false;
 }
 
-// inserts value as new node at beginning of list
-void CardList::insertFirst(Card c) {
-    Card *p=&c;
-    p->next=first;
-    first = p;
-}
-
 Card* CardList::get(string i){
     Card* p = first;
     if (p==nullptr){

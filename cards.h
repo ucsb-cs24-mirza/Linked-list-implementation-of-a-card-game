@@ -29,7 +29,6 @@ public:
     ~CardList();                      // destructor
     CardList(const CardList& source); //copy constructor (deep copy)
     bool contains(string i) const;  // true if value in list
-    void insertFirst(Card c);     // insert new first value
     void deleteCard(string i); // delete the matching card from the CardList
     CardList& operator=(const CardList& source); //overloaded  (NO CHANGE)
     friend ostream& operator<<(ostream& os, const CardList& random){
