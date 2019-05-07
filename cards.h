@@ -12,11 +12,9 @@ class Card {
 public:
     Card(){}
     ~Card(){}
-    string get_info()const;
     bool operator==(const Card& b);
     Card* next=nullptr;
-private:
-    const string info;
+    string info;
 };
 
 class CardList {

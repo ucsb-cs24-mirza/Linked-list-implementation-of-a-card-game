@@ -40,10 +40,8 @@ int main(int argv, char** argc){
   cardFile2.close();
 
   // Start the game
-  CardList Alice;
-  Alice.setPlayer("Alice");
-  CardList Bob;
-  Bob.setPlayer("Bob");
-  play(Alice,Bob);
+  l1.setPlayer("Alice");
+  l2.setPlayer("Bob");
+  play(l1,l2);
   return 0;
 }

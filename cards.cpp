@@ -3,12 +3,8 @@
 //Implementation of the classes defined in cards.h
 #include "cards.h"
 
-string Card::get_info() const{
-    return info;
-}
-
 bool Card::operator==(const Card& b){
-    if (this->get_info()==b.get_info()){
+    if (this->info==b.info){
         return true;
     }
     else {
@@ -22,7 +18,7 @@ CardList::CardList(const CardList& source) {
     first=nullptr;
     Card* p = source.first;
     while(p){
-        this->append(*p);
+        this->append(p->info);
         p=p->next;
     }
 }
@@ -42,7 +38,7 @@ CardList::~CardList() {
 bool CardList::contains(string i) const {
     Card* p = first;
     while(p){
-        if (p->get_info() == i){
+        if (p->info == i){
             return true;
         }
         p=p->next;
@@ -63,7 +59,7 @@ Card* CardList::get(string i){
         return nullptr;
     }
     else {
-        while(p->get_info()!=i&&p){
+        while(p->info!=i&&p){
             p=p->next;
         }
         if (!p){
@@ -76,7 +72,7 @@ void CardList::deleteCard(string i){
     Card* p = first;
     Card* prev = p;
     Card* n= p->next;
-    while(p->get_info()!=i){
+    while(p->info!=i){
         prev=p;
         p=p->next;
         n=p->next;
@@ -100,7 +96,7 @@ CardList& CardList::operator=(const CardList& source){
     l.first=nullptr;
     Card* q = source.first;
     while(q){
-        l.append(*q);
+        l.append(q->info);
         q=q->next;
     }
     return l;
@@ -133,7 +129,7 @@ void CardList::append(string i) {
 void CardList::print() const {
     Card *n = first;
     while (n) {
-        cout << n->get_info()<<endl;
+        cout << n->info<<endl;
         n = n->next;
     }
     cout<<endl;
@@ -143,34 +139,32 @@ void play(CardList& l1, CardList& l2){
     CardList match;
     Card* p1 = l1.getfirst();
     while(p1){
-        if (l2.contains(p1->get_info())){
-            match.append(p1->get_info());
+        if (l2.contains(p1->info)){
+            match.append(p1->info);
         }
         p1=p1->next;
     }
-    cout<<"matching cards:";
-    match.print();
     while(match.getfirst()){
     cout <<l1<<" picked matching card ";
     Card* m1=l1.getfirst();
-    while(!l2.contains(m1->get_info())){
+    while(!l2.contains(m1->info)){
         m1=m1->next;
     }
-    cout << m1->get_info()<<endl;
-    l1.deleteCard(m1->get_info());
-    l2.deleteCard(m1->get_info());
-    match.deleteCard(m1->get_info());
+    cout << m1->info<<endl;
+    l1.deleteCard(m1->info);
+    l2.deleteCard(m1->info);
+    match.deleteCard(m1->info);
     if (!match.getfirst()){
         break;}
     cout <<l2<<" picked matching card ";
     Card* m2=l2.getfirst();
-    while(!l1.contains(m2->get_info())){
+    while(!l1.contains(m2->info)){
         m2=m2->next;
     }
-    cout << m2->get_info()<<endl;
-    l1.deleteCard(m2->get_info());
-    l2.deleteCard(m2->get_info());
-    match.deleteCard(m2->get_info());
+    cout << m2->info<<endl;
+    l1.deleteCard(m2->info);
+    l2.deleteCard(m2->info);
+    match.deleteCard(m2->info);
     if(!match.getfirst()){
         break;
     }
