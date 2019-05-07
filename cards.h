@@ -6,14 +6,14 @@
 #define CARDS_H
 class Card {
 public:
-    Card(char s, int v);
-    char get_suits()const;
-    int get_value()const;
+    Card(string i){info = i;}
+    ~Card(){delete next;}
+    string get_info()const;
     bool operator==(const Card& b);
     Card* next=nullptr;
+    Card* prev=nullptr;
 private:
-    const char suits;
-    const int value;
+    const string info;
 };
 
 class CardList {
@@ -23,7 +23,6 @@ public:
     CardList();              // constructor
     void append(Card c); // append value at end of list
     void print() const;     // print values separate by ' '
-    int count() const;      // return count of values
 
     ~CardList();                      // destructor
     CardList(const CardList& source); //copy constructor (deep copy)
@@ -39,19 +38,17 @@ private:
 
 class Player {
 public: 
-    Player(){ name="I have no name";}
-    void setName(string urname){name = urname;}
-    Card pick()
+    Player(string n){ name=n;}
+    friend void play(CardList& l1, CardList& l2);
     friend ostream& operator<<(ostream& os, const Player& random){
-        os<< random.name<<" picked matching card "<<random.c.get_suits()<<" "<<random.c.get_value()<<endl;
+        os<< random.name;
         return os;
     }
-    void setlist(const CardList l){ list=l;}
+    Card* getfirst(){return list.first;}
 
 private:
-    string name;
-    Card c;
-    CardList list;
+    string name="default";
+    Card* head; // head ptr to the CardList
 };
 
 #endif
