@@ -121,7 +121,6 @@ void CardList::print() const {
         cout << n->info<<endl;
         n = n->next;
     }
-    cout<<endl;
 }
 
 void play(CardList& l1, CardList& l2){
@@ -162,11 +161,13 @@ void play(CardList& l1, CardList& l2){
         l2.deleteCard(i2);
         match.deleteCard(i2);
         if (!match.getfirst()){
+            cout<<endl;
             break;
         }
     }
     cout <<l1<<"'s cards: \n";
     l1.print();
+    cout<<endl;
     cout<<l2<<"'s cards: \n";
     l2.print();
 }
