@@ -53,15 +53,21 @@ Card* CardList::get(string i){
 }
 void CardList::deleteCard(string i){
     Card* p = first;
-    Card* prev = p;
+    Card* prev;
     Card* n= p->next;
-    while(p->info!=i){
-        prev=p;
-        p=p->next;
-        n=p->next;
+    if(p->info==i){
+        first=n;
+        delete p;
     }
-    prev->next=n;
-    delete p;
+    else{
+        while(p->info!=i){
+            prev=p;
+            p=p->next;
+            n=p->next;
+        }
+        prev->next=n;
+        delete p;
+    }
 }
         
         
@@ -121,36 +127,44 @@ void CardList::print() const {
 void play(CardList& l1, CardList& l2){
     CardList match;
     Card* p1 = l1.getfirst();
+    CardList l22;
+    l22=l2;
     while(p1){
-        if (l2.contains(p1->info)){
-            match.append(p1->info);
+        if (l22.contains(p1->info)){
+            string m = p1->info;
+            l22.deleteCard(m);
+            match.append(m);
         }
         p1=p1->next;
     }
     while(match.getfirst()){
-    cout <<l1<<" picked matching card ";
-    Card* m1=l1.getfirst();
-    while(!l2.contains(m1->info)){
-        m1=m1->next;
-    }
-    cout << m1->info<<endl;
-    l1.deleteCard(m1->info);
-    l2.deleteCard(m1->info);
-    match.deleteCard(m1->info);
-    if (!match.getfirst()){
-        break;}
-    cout <<l2<<" picked matching card ";
-    Card* m2=l2.getfirst();
-    while(!l1.contains(m2->info)){
-        m2=m2->next;
-    }
-    cout << m2->info<<endl;
-    l1.deleteCard(m2->info);
-    l2.deleteCard(m2->info);
-    match.deleteCard(m2->info);
-    if(!match.getfirst()){
-        break;
-    }
+        cout <<l1<<" picked matching card ";
+        Card* m1=l1.getfirst();
+        while(!l2.contains(m1->info)){
+            m1=m1->next;
+        }
+        cout << m1->info<<endl;
+        string i=m1->info;
+        l1.deleteCard(i);
+        l2.deleteCard(i);
+        match.deleteCard(i);
+        if (!match.getfirst()){
+            cout<<endl;
+            break;}
+        cout <<l2<<" picked matching card ";
+        Card* m2=l2.getfirst();
+        while(!l1.contains(m2->info)){
+            m2=m2->next;
+        }
+        cout << m2->info<<endl;
+        string i2=m2->info;
+        l1.deleteCard(i2);
+        l2.deleteCard(i2);
+        match.deleteCard(i2);
+        if (!match.getfirst()){
+            cout<<endl;
+            break;
+        }
     }
     cout <<l1<<"'s cards: \n";
     l1.print();

@@ -25,23 +25,23 @@ int main(int argv, char** argc){
     return 1;
   }
 
-  CardList l1;
-  CardList l2;
+  CardList A;
+  CardList B;
   // Read each file and store cards
   while (getline (cardFile1, line) && (line.length() > 0)){
-      l1.append(line);
+      A.append(line);
 
   }
   cardFile1.close();
 
   while (getline (cardFile2, line) && (line.length() > 0)){
-      l2.append(line);
+      B.append(line);
   }
   cardFile2.close();
 
   // Start the game
-  l1.setPlayer("Alice");
-  l2.setPlayer("Bob");
-  play(l1,l2);
+  A.setPlayer("Alice");
+  B.setPlayer("Bob");
+  play(A,B);
   return 0;
 }
