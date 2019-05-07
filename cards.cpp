@@ -3,16 +3,6 @@
 //Implementation of the classes defined in cards.h
 #include "cards.h"
 
-bool Card::operator==(const Card& b){
-    if (this->info==b.info){
-        return true;
-    }
-    else {
-        return false;
-    }
-    // compare Card* next
-}
-
 // copy constructor
 CardList::CardList(const CardList& source) {
     first=nullptr;

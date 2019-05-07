@@ -12,7 +12,6 @@ class Card {
 public:
     Card(){}
     ~Card(){}
-    bool operator==(const Card& b);
     Card* next=nullptr;
     string info;
 };
