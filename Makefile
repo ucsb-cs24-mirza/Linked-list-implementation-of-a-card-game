@@ -3,10 +3,10 @@
 
 CXX_FLAG = --std=c++11 -g
 
-all: main 
-	./main acards.txt bcards.txt
-main: main.o
-	g++ $(CXX_FLAG) -o main main.o
+all: game 
+	./game acards.txt bcards.txt
+game: main.o
+	g++ $(CXX_FLAG) -o game main.o
 
 main.o: main.cpp
 	g++ -c $(CXX_FLAG) main.cpp
