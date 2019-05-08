@@ -36,7 +36,7 @@ bool CardList::contains(string i) const {
     return false;
 }
 
-Card* CardList::get(string i){
+/*Card* CardList::get(string i){
     Card* p = first;
     if (p==nullptr){
         return nullptr;
@@ -51,6 +51,7 @@ Card* CardList::get(string i){
         return p;
     }
 }
+*/
 void CardList::deleteCard(string i){
     Card* p = first;
     Card* prev;
@@ -71,8 +72,6 @@ void CardList::deleteCard(string i){
 }
         
         
-//Assignment operator should copy the list from the source
-//to this list, deleting/replacing any existing nodes
 CardList& CardList::operator=(const CardList& source){
     Card* tmp;
     CardList&l = *this;
@@ -90,6 +89,15 @@ CardList& CardList::operator=(const CardList& source){
     }
     return l;
     
+}
+vector<string> CardList::vectorize(){
+    vector<string> v;
+    Card *p = first;
+    while(p){
+        v.push_back(p->info);
+        p=p->next;
+    }
+    return v;
 }
 
 Card* CardList::getfirst(){
@@ -114,7 +122,6 @@ void CardList::append(string i) {
     }
 }
 
-// prCard cs enclose in [], separated by spaces
 void CardList::print() const {
     Card *n = first;
     while (n) {
