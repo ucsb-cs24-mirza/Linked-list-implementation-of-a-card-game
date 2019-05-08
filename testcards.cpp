@@ -13,11 +13,23 @@ int main(){
 }
 
 void runAll(){
-  test_append();
-  test_equal();
-  test_card();
+    test_copyconstructor();
+    test_append();
+    test_equal();
+    test_card();
 }
+void test_copyconstructor(){
+    START_TEST("test_copyconstructor");
+    CardList list1;
+    string arr[] ={"h 3","s 2","c a","c 3","h 9"};
+    for(int i = 0; i<5; i++){
+        list1.append(arr[i]);
+    }
 
+    CardList list2(list1);
+    assertEquals(list1.vectorize(),list2.vectorize(),"test_copyconstructor");
+    END_TEST("test_copyconstructor");
+}
 void test_append(){
   START_TEST("test_append");
   test_append_empty_list();
@@ -44,17 +56,32 @@ void test_card(){
 
 void test_append_empty_list(){ 
 // A test case for append single card node to CardList
+    string testname = "case 0: append Card ['c 2'] to empty CardList";
+    CardList lst;
+    lst.append("c 2");
+    vector<string> vexp={"c 2"};
+    vector<string> vact = lst.vectorize();
+    if(vexp!=vact){
+        cout<<" FAILED: "<<testname<<endl;
+    }else{
+        cout<<" PASSED: "<<testname<<endl;
+    }
+
 }
 
 void test_append_single_element_list(){ 
-  // Tests cases should be independent,
-    // small, fast, orthogonal (test for different cases)
-
+    string testname = "case 1: append Card 'c 5' to single-element list with existing card 'c 2'";
+    CardList lst;
+    lst.append("c 2");
+    lst.append("c 5");
+    vector<string> vexp={"c 2", "c 5"};
+    vector<string> vact=lst.vectorize();
+    assertEquals(vexp,vact,testname);
 }
 void test_equal_empty_list(){ 
   string testname = "case 0: [], []";
   CardList l1, l2;
-  assertEquals(l1.head,l2.head);
+  assertEquals(l1.getfirst(),l2.getfirst(),"test_equal_empty_list");
 }
 
 void test_card_operator_double_equal(){
