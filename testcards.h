@@ -45,7 +45,7 @@ void assertEquals(string expected, string actual, string testDescription){
 
 void print_vector(vector<string> v){
     cout<<"{ ";
-    for (int i=0;i<v.size();i++){
+    for (unsigned i=0;i<v.size();i++){
         cout<<v[i]<<", ";
     }
     cout<<"}"<<endl;
