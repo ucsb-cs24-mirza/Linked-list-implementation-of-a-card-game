@@ -41,7 +41,7 @@ void test_append(){
 void test_equal(){
   START_TEST("test_equal");
   test_equal_empty_list();
-  //test_equal_single_element_list();
+  test_equal_single_element_list();
   END_TEST("test_equal");
 
 }
@@ -83,9 +83,17 @@ void test_equal_empty_list(){
   CardList l1, l2;
   assertEquals(l1.getfirst(),l2.getfirst(),"test_equal_empty_list");
 }
+void test_equal_single_element_list(){
+    string testname = "case 1: {'c 3'},{'c 3'}";
+    CardList l1,l2;
+    l1.append("c 3");
+    l2=l1;
+    assertEquals(l1.getfirst(),l2.getfirst(),"test_equal_single_element_list");
+}
 
 void test_card_operator_double_equal(){
   // Test to check if == is overloaded for card
+    
 }
 
 

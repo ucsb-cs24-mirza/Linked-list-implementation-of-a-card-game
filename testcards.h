@@ -25,6 +25,8 @@ void test_append_empty_list(); // A test case for append
 void test_append_single_element_list(); // Tests cases should be independent,
             // small, fast, orthogonal
 void test_equal_empty_list();
+void test_equal_single_element_list();
+
 void test_card_operator_double_equal();
 
 void START_TEST(string testname){
@@ -73,7 +75,7 @@ void assertEquals(Card *expected, Card *actual, string testDescription){
       expected=expected->next;
       actual=actual->next;
   }
-  cout<<"PASSED " << endl;
+  cout<<"PASSED " << testDescription<< endl;
 }
 
 

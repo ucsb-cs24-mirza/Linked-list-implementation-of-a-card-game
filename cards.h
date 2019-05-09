@@ -13,8 +13,9 @@ class Card {
 public:
     Card(){}
     ~Card(){}
-    Card* next=nullptr;
     string info;
+    Card* next=nullptr;
+    friend bool operator==(Card& a, Card& b);
 };
 
 class CardList {
@@ -45,5 +46,7 @@ private:
 };
 
 void play(CardList& l1, CardList& l2);
+bool operator==(Card& a, Card& b);
+
 #endif
 

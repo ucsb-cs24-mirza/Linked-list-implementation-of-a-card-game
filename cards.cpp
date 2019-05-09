@@ -36,22 +36,8 @@ bool CardList::contains(string i) const {
     return false;
 }
 
-/*Card* CardList::get(string i){
-    Card* p = first;
-    if (p==nullptr){
-        return nullptr;
-    }
-    else {
-        while(p->info!=i&&p){
-            p=p->next;
-        }
-        if (!p){
-            return nullptr;
-        }
-        return p;
-    }
-}
-*/
+//Precondition: card with info 'string i' exist in the current list
+//Postcondition: this card is deleted from the list
 void CardList::deleteCard(string i){
     Card* p = first;
     Card* prev;
@@ -73,6 +59,7 @@ void CardList::deleteCard(string i){
         
         
 CardList& CardList::operator=(const CardList& source){
+    // overloaded assignment operator
     Card* tmp;
     CardList&l = *this;
     Card* p = l.first;
@@ -123,10 +110,20 @@ void CardList::append(string i) {
 }
 
 void CardList::print() const {
+    // print cards in the cardlist
     Card *n = first;
     while (n) {
         cout << n->info<<endl;
         n = n->next;
+    }
+}
+
+bool operator==(Card& a, Card& b){
+    if (a.info==b.info){
+        return true;
+    }
+    else{
+        return false;
     }
 }
 
