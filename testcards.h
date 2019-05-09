@@ -1,6 +1,6 @@
 // testcards.h
 //Authors: Danming Wang
-//All test declarations go here
+// 05/08/2019
 
 #ifndef TESTCARDS_H
 #define TESTCARDS_H
@@ -17,8 +17,8 @@ void test_equal();
 void test_card();
 
 void test_destructor();
-void test_remove();
-void test_search();
+void test_deleteCard();
+void test_contains();
 
 
 void test_append_empty_list(); // A test case for append
@@ -39,7 +39,7 @@ void END_TEST(string testname) {
 
 void assertEquals(string expected, string actual, string testDescription){
   if (expected == actual) {
-    cout<<"PASSED " << endl;
+    cout<<" PASSED " << testDescription<< endl;
   } else {
     cout<< "  FAILED: "<< testDescription << endl <<"   Expected: "<< expected << " Actual: " << actual << endl;
   }
@@ -55,7 +55,7 @@ void print_vector(vector<string> v){
 
 void assertEquals(vector<string> expected, vector<string> actual, string testDescription){
   if (expected == actual) {
-    cout<<"PASSED " << endl;
+    cout<<" PASSED " << testDescription<< endl;
   } else {
     cout<< "  FAILED: "<< testDescription << endl <<"   Expected: ";
     print_vector(expected);
@@ -66,16 +66,16 @@ void assertEquals(vector<string> expected, vector<string> actual, string testDes
 
 void assertEquals(Card *expected, Card *actual, string testDescription){
   if(!actual&&!expected){
-      cout<<"PASSED "<<testDescription<<endl;
+      cout<<" PASSED "<<testDescription<<endl;
   }
   while(expected){
       if (actual->info!=expected->info){
-          cout<<"FAILED: "<<testDescription<<endl;
+          cout<<" FAILED: "<<testDescription<<endl;
       }
       expected=expected->next;
       actual=actual->next;
   }
-  cout<<"PASSED " << testDescription<< endl;
+  cout<<" PASSED " << testDescription<< endl;
 }
 
 

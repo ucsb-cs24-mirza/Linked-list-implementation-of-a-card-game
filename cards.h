@@ -21,7 +21,7 @@ public:
 class CardList {
 
 public:
-    CardList():first(nullptr){}
+    CardList():first(nullptr){player="default";}
     ~CardList();
     void setPlayer(string n){player=n;}
     Card* getfirst();
@@ -41,7 +41,7 @@ public:
     friend void play(CardList& l1, CardList& l2);
 
 private:
-    string player="default";
+    string player;
     Card *first; 
 };
 
