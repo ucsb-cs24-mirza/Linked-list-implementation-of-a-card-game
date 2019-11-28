@@ -1,2 +1,2 @@
-# pa01_danming33
-Repository for PA01
+# Linked-list implementation of a card game, C++
+Linked-list implementation of a card game, C++
